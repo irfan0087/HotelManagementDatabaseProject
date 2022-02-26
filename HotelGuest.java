@@ -4,28 +4,31 @@ import java.io.FileReader;
 
 public class HotelGuest {
 
-    private String guestName;
-    private String room;
-    private String roomType;
-    private int nightlyCost;
-    private int duration;
-    private int totalCost;
+    // [GUEST_NAME, ROOM_NUMBER, ROOM_TYPE, NIGHTLY_COST, DURATION, TOTAL_COST] \\
+
+    private String guestName; // Name of Guest.
+    private String room; // Room of Guest
+    private String roomType; // Room Type of Guest
+    private int nightlyCost; // Nightly Cost of Room Type
+    private int duration; // Duration of Stay for the Guest
+    private int totalCost; // Total Cost of Stay
 
     public HotelGuest(String name) {
         try {
             File hotelData = new File(
-                    "C:\\Users\\306972\\Desktop\\AP CSA\\HotelManagementDataBaseProject\\HotelData.csv");
-            BufferedReader in = new BufferedReader(new FileReader(hotelData));
+                    "C:\\Users\\306972\\Desktop\\AP CSA\\HotelManagementDataBaseProject\\HotelData.csv"); // Gets File
+            BufferedReader in = new BufferedReader(new FileReader(hotelData)); // Like Scanner. Easier to use while File Reading
             String line;
-            while ((line = in.readLine()) != null) {
-                String[] fields = line.split(",");
-                if (fields[0].equals(name)) {
+            while ((line = in.readLine()) != null) { // While current line is not equal to null
+                String[] fields = line.split(","); // Seperate the line into a String array. Seperate at the commas.
+                if (fields[0].equals(name)) { // If the name matches the name in the constructor, initialize all the variables with those attributes
                     this.guestName = fields[0];
                     this.room = fields[1];
                     this.roomType = fields[2];
                     this.nightlyCost = Integer.parseInt(fields[3]);
                     this.duration = Integer.parseInt(fields[4]);
                     this.totalCost = Integer.parseInt(fields[5]);
+                    break; // When Guest is found, break out of loop. (For efficiency)
                 }
             }
 
@@ -35,6 +38,10 @@ public class HotelGuest {
         }
     }
 
+    /**
+     * Gets the name of the Guest
+     * @return The Guest name stored in the database
+     */
     public String getGuestName() {
         return guestName;
     }
@@ -43,6 +50,10 @@ public class HotelGuest {
         this.guestName = guestName;
     }
 
+    /**
+     * Gets the room number of the Guest
+     * @return Room Number from Database
+     */
     public String getRoom() {
         return room;
     }
@@ -51,6 +62,10 @@ public class HotelGuest {
         this.room = room;
     }
 
+    /**
+     * Gets the room type of the Guest
+     * @return Room Type from the database
+     */
     public String getRoomType() {
         return roomType;
     }
@@ -59,6 +74,10 @@ public class HotelGuest {
         this.roomType = roomType;
     }
 
+    /**
+     * Gets the nightly cost of the room
+     * @return The Nightly Cost from the Database
+     */
     public int getNightlyCost() {
         return nightlyCost;
     }
@@ -67,6 +86,10 @@ public class HotelGuest {
         this.nightlyCost = nightlyCost;
     }
 
+    /**
+     * Gets the stay time/duration of the Guest
+     * @return The Duration from the database
+     */
     public int getDuration() {
         return duration;
     }
@@ -75,6 +98,10 @@ public class HotelGuest {
         this.duration = duration;
     }
 
+    /**
+     * Gets the total cost of the Guest's stay
+     * @return The calculated total cost from the database
+     */
     public int getTotalCost() {
         return totalCost;
     }
