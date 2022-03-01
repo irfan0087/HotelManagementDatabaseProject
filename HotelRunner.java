@@ -14,5 +14,9 @@ public class HotelRunner {
          *  Better-Command - @bladedurman
          *  Compare-Command - @bladedurman
          */
+
+         Hotel hotel = new Hotel();
+
+         hotel.collect();
     }
 }

@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 public class Sorter {
 
-    public static ArrayList<Double> sortS(ArrayList<Double> arrList) {
-        ArrayList<Double> newArr = new ArrayList<Double>(); // New ArrayList we will be returning
+    public static ArrayList<Integer> sortS(ArrayList<Integer> arrList) {
+        ArrayList<Integer> newArr = new ArrayList<Integer>(); // New ArrayList we will be returning
 
         for (int i = 0; i < arrList.size(); i++) {
             /* If current value in arraylist is equal to minimum value, then remove it from the arraylist and add it to the 
@@ -22,8 +22,8 @@ public class Sorter {
         return newArr;
     }
 
-    private static double min(ArrayList<Double> myList) {
-        double minimum = myList.get(0); // Start with the first value of the arrayList as minimum
+    private static int min(ArrayList<Integer> myList) {
+        int minimum = myList.get(0); // Start with the first value of the arrayList as minimum
         for (int i = 1; i < myList.size(); i++) {
             if (minimum > myList.get(i)) // if the minimum value is greater than the currenct value, update minimum value to current value
                 minimum = myList.get(i);

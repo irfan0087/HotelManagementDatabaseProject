@@ -1,4 +1,10 @@
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Scanner;
+
+import utils.Sorter;
+
 import java.io.*;
 
 public class Hotel {
@@ -23,6 +29,77 @@ public class Hotel {
         } catch (Exception e) {
             System.out.println(e);
         }
+    }
+
+    public void collect() {
+        // System.out.println(Arrays.toString(getCommand()));
+        System.out.print(
+            "Hello! Welcome to Hotel Scootiness! You must be an employee. Please enter in your command using this format:\n" + 
+            "\n\tCOMMAND, \n\t(SEARCH - TITLE OF THING) OR \n\t(SORT - ATRRIBUTE) OR \n\t(LIST_BETTER - OBJECT) OR \n\t(COMPARE - COMPARE) OR \n\t(QUIT)\n\n"
+        );
+        while (true) {
+            String[] command = getCommand();
+
+            if (command[0].equalsIgnoreCase("quit") || command[0].toLowerCase().substring(0, 1).equals("q")) {
+                System.out.println("Bye-Bye!\nDon't Die");
+                break;
+            } else if (command[0].equals("search")) {
+                // Search Method - @AwooshDas
+            } else if (command[0].equalsIgnoreCase("compare")) {
+                // Compares Method
+            } else if (command[0].equalsIgnoreCase("better-than")) {
+                // Better-Than Method
+            } else if (command[0].equalsIgnoreCase("sort")) {
+                sortByAttribute(command[1]);
+            } else {
+                System.out.println("That isn't a valid command!");
+            }
+        }
+    }
+
+    private void sortByAttribute(String atr) {
+        switch (atr.toLowerCase()) {
+            case "name":
+            case "names":
+                ArrayList<String> names = new ArrayList<String>();
+                for (int i = 0; i < allGuests.size(); i++) {
+                    names.add(allGuests.get(i).getGuestName());
+                }
+                Collections.sort(names);
+                
+                System.out.println(names);
+                break;
+            case "duration":
+            case "durations":
+                ArrayList<Integer> durations = new ArrayList<Integer>();
+                for (int i = 0; i < allGuests.size(); i++) {
+                    durations.add(allGuests.get(i).getDuration());
+                }
+                durations = Sorter.sortS(durations);
+                System.out.println("Shortest: " + durations.get(0) + "\nLongest: " + durations.get(durations.size() - 1) + "\n\n" + durations);      
+                break;
+            case "expense":
+            case "cost":
+                ArrayList<Integer> costs = new ArrayList<Integer>();
+                for (int i = 0; i < allGuests.size(); i++) {
+                    costs.add(allGuests.get(i).getTotalCost());
+                }
+                costs = Sorter.sortS(costs);
+                System.out.println("Cheapest: " + costs.get(0) + "\nMost Expensive: " + costs.get(costs.size() - 1) + "\n\n" + costs);
+                break;
+            default:
+                System.out.println("Invalid Attribute");
+        }
+    }
+
+    private String[] getCommand() {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Command >> ");
+        String commandStr = sc.nextLine();
+        String[] command = (commandStr.contains(", ")) ? commandStr.split(", "):commandStr.split(",");
+
+        return command;
     }
 
     /**
