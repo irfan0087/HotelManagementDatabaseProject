@@ -11,7 +11,7 @@ public class HotelRunner {
          * @bladedurman - Command Listener
          * Both - Commands
          *  Search Command - @AwooshDas
-         *  Better-Command - @bladedurman
+         *  Better-Command - @AwooshDas
          *  Compare-Command - @bladedurman
          */
 
