@@ -40,20 +40,25 @@ public class Hotel {
                 "Hello! Welcome to Hotel Scootiness! You must be an employee. Please enter in your command using this format:\n"
                         +
                         "\n\tCOMMAND, \n\t(SEARCH - TITLE OF THING) OR \n\t(SORT - ATRRIBUTE) OR \n\t(LIST_BETTER - OBJECT) OR \n\t(COMPARE - COMPARE) OR \n\t(QUIT)\n\n");
-        while (true) {
+        while (true) { // Forever while loop
             String[] command = getCommand();
 
             if (command[0].equalsIgnoreCase("quit") || command[0].toLowerCase().substring(0, 1).equals("q")) {
                 System.out.println("Bye-Bye!\nDon't Die");
                 break;
             } else if (command[0].equals("search")) {
-                search(command[1]);
+                if (command[2] == null || command[1] == null) {
+                    System.out.println("Please put in the correct arguments");
+                    continue;
+                }
+                search(command[1], command[2]);
             } else if (command[0].equalsIgnoreCase("compare")) {
                 if (command[2] == null || command[1] == null) {
                     System.out.println("Please enter the person you want to compare to.");
                     continue;
                 } else if (getGuest(command[1]) == null || getGuest(command[2]) == null) {
-                    System.out.println((getGuest(command[1]) == null) ? command[1] + " was not found.":command[2] + " was not found.");
+                    System.out.println((getGuest(command[1]) == null) ? command[1] + " was not found."
+                            : command[2] + " was not found.");
                     continue;
                 }
                 compareGuest(command[1], command[2]);
@@ -67,8 +72,19 @@ public class Hotel {
         }
     }
 
-    private void search(String atr) {
+    private void search(String type, String thing) {
+        switch (type.toLowerCase()) {
+            case "name":
+            case "names":
 
+                break;
+            case "room":
+            case "rooms":
+
+                break;
+            default:
+                System.out.println("Invalid Search Query");
+        }
     }
 
     private void compareGuest(String nameOne, String nameTwo) {
@@ -78,11 +94,17 @@ public class Hotel {
         System.out.println(guestOne.getGuestName() + " :: " + guestOne.getRoom() + " :: " + guestOne.getRoomType());
         System.out.println(guestTwo.getGuestName() + " :: " + guestTwo.getRoom() + " :: " + guestTwo.getRoomType());
 
-        String duration = (guestOne.getDuration() > guestTwo.getDuration()) ? guestOne.getGuestName() + " is Staying Longer":guestTwo.getGuestName() + " is Staying Longer";
-        if (guestOne.getDuration() == guestTwo.getDuration()) duration = "Duration is the same";
+        String duration = (guestOne.getDuration() > guestTwo.getDuration())
+                ? guestOne.getGuestName() + " is Staying Longer"
+                : guestTwo.getGuestName() + " is Staying Longer";
+        if (guestOne.getDuration() == guestTwo.getDuration())
+            duration = "Duration is the same";
 
-        String totalCost  = (guestOne.getTotalCost() > guestTwo.getTotalCost()) ? guestOne.getGuestName() + " is paying more.":guestTwo.getGuestName() + " is paying more";
-        if (guestOne.getTotalCost() == guestTwo.getTotalCost()) totalCost = "Total Cost is the same";
+        String totalCost = (guestOne.getTotalCost() > guestTwo.getTotalCost())
+                ? guestOne.getGuestName() + " is paying more."
+                : guestTwo.getGuestName() + " is paying more";
+        if (guestOne.getTotalCost() == guestTwo.getTotalCost())
+            totalCost = "Total Cost is the same";
 
         System.out.println("\n" + duration);
         System.out.println(totalCost);
@@ -141,7 +163,7 @@ public class Hotel {
         for (int i = 0; i < command.length; i++) {
             commandToReturn[i] = command[i];
         }
-        //System.out.println(Arrays.toString(command));
+        // System.out.println(Arrays.toString(command));
 
         return commandToReturn;
     }
