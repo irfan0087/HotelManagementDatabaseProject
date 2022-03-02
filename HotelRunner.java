@@ -13,6 +13,7 @@ public class HotelRunner {
          *  Search Command - @AwooshDas
          *  Better-Command - @AwooshDas
          *  Compare-Command - @bladedurman
+         *  Sort Command - @bladedurman
          */
 
          Hotel hotel = new Hotel();
