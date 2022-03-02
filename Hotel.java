@@ -47,7 +47,7 @@ public class Hotel {
                 System.out.println("Bye-Bye!\nDon't Die");
                 break;
             } else if (command[0].equals("search")) {
-                // Search Method - @AwooshDas
+                search(command[1]);
             } else if (command[0].equalsIgnoreCase("compare")) {
                 if (command[2] == null || command[1] == null) {
                     System.out.println("Please enter the person you want to compare to.");
@@ -58,13 +58,17 @@ public class Hotel {
                 }
                 compareGuest(command[1], command[2]);
             } else if (command[0].equalsIgnoreCase("better-than")) {
-                // Better-Than Method
+                betterThan(command[1]);
             } else if (command[0].equalsIgnoreCase("sort")) {
                 sortByAttribute(command[1]);
             } else {
                 System.out.println("That isn't a valid command!");
             }
         }
+    }
+
+    private void search(String atr) {
+
     }
 
     private void compareGuest(String nameOne, String nameTwo) {
@@ -82,6 +86,10 @@ public class Hotel {
 
         System.out.println("\n" + duration);
         System.out.println(totalCost);
+
+    }
+
+    private void betterThan(String atr) {
 
     }
 
