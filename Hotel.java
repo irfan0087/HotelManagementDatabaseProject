@@ -77,7 +77,6 @@ public class Hotel {
             case "name":
             case "names":
                 System.out.println(getGuest(thing));
-                
                 break;
             case "room":
             case "rooms":
