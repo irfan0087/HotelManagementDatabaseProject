@@ -76,10 +76,15 @@ public class Hotel {
         switch (type.toLowerCase()) {
             case "name":
             case "names":
-
+                System.out.println(getGuest(thing));
                 break;
             case "room":
             case "rooms":
+                for (HotelGuest hG : allGuests) {
+                    if (hG.getRoom().toLowerCase().equals(thing.toLowerCase())) {
+                        System.out.println(hG);
+                    }
+                }
 
                 break;
             default:
