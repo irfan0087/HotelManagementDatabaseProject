@@ -109,4 +109,8 @@ public class HotelGuest {
     public void setTotalCost(int totalCost) {
         this.totalCost = totalCost;
     }
+
+    public String toString() {
+        return "Name: " + this.guestName + "\nRoom: " + this.room + "\nRoom Type: " + this.roomType + "\nNightly Cost: " + this.nightlyCost + "\nDuration: " + this.duration + "\n\nTotal Cost: " + this.totalCost;
+    }
 }
