@@ -76,7 +76,7 @@ public class Hotel {
         switch (type.toLowerCase()) {
             case "name":
             case "names":
-
+                
                 break;
             case "room":
             case "rooms":
